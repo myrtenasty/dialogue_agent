@@ -37,9 +37,10 @@ String[][] answer = new String[3][0];
 String[][] words = new String[3][0];
 
 String[] list;
+String[] list2;
+String[] listPart;
 String[] listAll;
 int wordCount = 0;
-int count = 0;
 int wordFreq[][] = new int[3][1];
  
 public void setup() {
@@ -160,8 +161,12 @@ public void Conclude(){
     listAll = new String[0];
     for(int j = 0; j < answer[i].length; j++){
       list = split(answer[i][j], " ");
+      list2 = new String[0];
+      for(String st:list){
+        list2 = concat(list2, split(st, ","));
+      }
       // println(list);
-      listAll = concat(listAll, list);
+      listAll = concat(listAll, list2);
     }
     // println(listAll);
     // println(listAll.length);
@@ -195,7 +200,7 @@ public void Conclude(){
     // println(wordFreq[i]);
 
     println();
-    println("For question "+(i+1)+", word frequency are shown blow:");
+    println("For question "+(i+1)+", word frequency are shown below:");
     for(int m = 1; m < words[i].length; m++){
       println(words[i][m]+": "+wordFreq[i][m]);
     }
